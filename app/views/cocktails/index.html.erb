@@ -1,0 +1,53 @@
+
+<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://images.unsplash.com/photo-1566417713940-fe7c737a9ef2?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1615&q=80);">
+  <div class="container">
+    <h1>WELCOME TO MISTER COCKTAIL</h1>
+    <p>Best ones around</p>
+    <a class="btn btn-flat" href="#">Apply now</a>
+  </div>
+</div>
+
+<div class="container">
+
+  <div class="cards">
+
+
+    <% @cocktails.each do |cocktail| %>
+      <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/breakfast.jpg')">
+        <%= link_to cocktail.name, cocktail_path(cocktail) %>
+      </div>
+    <% end %>
+
+
+  </div>
+    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">Add Cocktail</button>
+</div>
+
+
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">New message</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <%= simple_form_for @cocktail do |f| %>
+          <%= f.input :name %>
+
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <%= f.submit class: "btn btn-primary" %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
