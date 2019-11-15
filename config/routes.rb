@@ -8,6 +8,8 @@ Rails.application.routes.draw do
 
   resources :doses, only: [:new, :destroy]
 
+  root to: "cocktails#index"
+
 end
 
 
