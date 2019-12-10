@@ -1,0 +1,10 @@
+<h1>ENTER THE COCKTAIL NAME</h1>
+
+<%= simple_form_for @cocktail do |f| %>
+  <%= f.input :name %>
+  <%= f.submit  %>
+<% end %>
+
+
+<br>
+<%= link_to "Back to Home", cocktails_path  %>

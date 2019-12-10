@@ -1,0 +1,64 @@
+<div class="container border mt-5" style="width: 30%; background-color: white;">
+
+
+  <div class="d-flex border mt-3 ">
+    <br>
+    <%= cl_image_tag @cocktail.photo.key, height: 300, width: 450, crop: :fill %>
+    <br>
+  </div>
+
+  <div class="d-flex justify-content-center">
+    <h1><%= @cocktail.name %></h1>
+  </div>
+
+  <div>
+    <% @cocktail.doses.each do |dose| %>
+      <p>Description: <%= dose.description %></p>
+      <p class="border-bottom ">Ingredient: <%= dose.ingredient.name %></p>
+    <% end %>
+
+    <div class="d-flex justify-content-between">
+      <div>
+        <%= link_to "Add dose", new_cocktail_dose_path(@cocktail)  %>
+        <button type="button" class="btn text-center " style="background-color: #472b62; border: 2px solid white; color: white; " data-toggle="modal" data-target="#exampleModal">Add Dose</button>
+        </div>
+
+        <div>
+          <%= link_to "Back to Cocktails", cocktails_path %>
+        </div>
+
+        <div>
+          <%= link_to "Delete", cocktail_path(@cocktail), method: :delete %>
+        </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">New Cocktail</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+          <%= simple_form_for [@cocktail, @dose] do |f| %>
+            <%= f.input :description %>
+            <%= f.association :ingredient %>
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <%= f.submit class: "btn btn-primary" %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
