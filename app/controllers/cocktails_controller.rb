@@ -16,7 +16,7 @@ class CocktailsController < ApplicationController
   end
   # Create (when /new from is submitted)
   def create
-     @cocktail = Cocktail.new(cocktail_params)
+    @cocktail = Cocktail.new(cocktail_params)
     if @cocktail.save
       redirect_to cocktail_path(@cocktail)
     else
@@ -25,9 +25,9 @@ class CocktailsController < ApplicationController
   end
 
   def destroy
-     @cocktail = Cocktail.find(params[:id])
-     @cocktail.destroy
-     redirect_to cocktails_path
+    @cocktail = Cocktail.find(params[:id])
+    @cocktail.destroy
+    redirect_to cocktails_path
   end
 
   private
