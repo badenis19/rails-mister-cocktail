@@ -1,3 +1,8 @@
+// .pic {
+//   background-image: url("https://images.unsplash.com/photo-1473205476379-7949a9f65d28?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80");
+
+//   }
+
 .card-category {
   background-size: cover;
   background-position: center;
@@ -11,4 +16,11 @@
   text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
   border-radius: 5px;
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  text-decoration: none;
+
+  a {
+    color: white;
+    text-decoration: none;
+    text-transform: uppercase;
+  }
 }

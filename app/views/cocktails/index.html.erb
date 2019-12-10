@@ -1,43 +1,38 @@
-
+<!-- banner -->
 <div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://images.unsplash.com/photo-1566417713940-fe7c737a9ef2?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1615&q=80);">
   <div class="container">
     <h1>WELCOME TO MISTER COCKTAIL</h1>
-    <p>Best ones around</p>
-    <a class="btn btn-flat" href="#">Apply now</a>
+    <p>Best cocktails around</p>
+    <button type="button" class="btn text-center " style="background-color: #472b62; border: 2px solid white; color: white; " data-toggle="modal" data-target="#exampleModal">Add Cocktails</button>
   </div>
 </div>
 
-<div class="container">
 
+<!-- cards container -->
+<div class="container p-4">
   <div class="cards">
-
-
     <% @cocktails.each do |cocktail| %>
-      <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/breakfast.jpg')">
+    <%= link = cocktail.photo.attached? ? cl_image_path(cocktail.photo.key) : "https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80" %>
+      <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%= link %> )">
         <%= link_to cocktail.name, cocktail_path(cocktail) %>
       </div>
     <% end %>
-
-
   </div>
-    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">Add Cocktail</button>
-</div>
 
-
+<!-- modal -->
 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">New message</h5>
+        <h5 class="modal-title" id="exampleModalLabel">New Cocktail</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
       <div class="modal-body">
         <%= simple_form_for @cocktail do |f| %>
-          <%= f.input :name %>
-
-
+          <%= f.input :name, :label => "Enter name below:", :placeholder => "new cocktail" %>
+          <%= f.input :photo, as: :file %>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
